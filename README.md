@@ -11,7 +11,7 @@ Ruby 2.3.4
 Bundler
 
 ## User Stories
-| User Stories  |
+| Behavior |
 |---|
 | User can add a project with name of the project, begin date and end date on the welcome page.   |
 | User can add a project with name of the project, begin date and end date on the welcome page.  |
@@ -37,7 +37,7 @@ Bundler
 
   volunteer_tracker=# CREATE DATABASE volunteer_tracker_test WITH TEMPLATE volunteer_tracker;
 
-* You can clone this repository to your machine, navigate to the file path in your terminal, and run 'app.rb' by typing '$ruby app.rb'. If you chose to clone the repository, after you run 'app.rb' you will need to copy the localhost path into your web browswer. The standard localhost for Sinatra is port 4567.
+* You can clone this repository to your machine, navigate to the file path in your terminal, and run 'app.rb' by typing '$ruby app.rb'. If you chose to clone the repository, after you run 'app.rb' you will need to copy the localhost path into your web browser. The standard localhost for Sinatra is port 4567.
 
 ## Built With
 
