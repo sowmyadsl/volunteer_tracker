@@ -8,4 +8,12 @@ describe(Volunteer) do
       expect(Volunteer.all()).to(eq([]))
     end
   end
+
+  describe("#first_name") do
+    it("lets you give it a first name to volunteer") do
+    test_volunteer = Volunteer.new({:first_name => "Sowmya", :last_name =>"Dinavahi", :joining_date => 2017-03-04, :leaving_date => 2018-04-05, :assigned_project_id => 1})
+    expect(test_volunteer.first_name()).to(eq("Sowmya"))
+    end
+
+end
 end
