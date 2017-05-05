@@ -7,3 +7,10 @@ describe('.all') do
       expect(Project.all).to eq([])
     end
   end
+
+  describe("#proj_name") do
+  it("returns the project name") do
+    test_project1 = Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", id: nil})
+    expect(test_project1.proj_name).to eq("Web Technologies")
+  end
+end
