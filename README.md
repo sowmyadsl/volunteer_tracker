@@ -30,9 +30,9 @@ Bundler
 
   Guest=# \c volunteer_tracker;
 
-  volunteer_tracker=# CREATE TABLE "volunteer" ("id"  SERIAL ,"first_name" VARCHAR ,"last_name" VARCHAR ,"joining_date" DATE ,"leaving_date" DATE ,"assigned_project_id" INTEGER ,PRIMARY KEY ("id"));
+  volunteer_tracker=# CREATE TABLE "volunteers" ("id"  SERIAL ,"first_name" VARCHAR ,"last_name" VARCHAR ,"joining_date" DATE ,"leaving_date" DATE ,"assigned_project_id" INTEGER ,PRIMARY KEY ("id"));
 
-  volunteer_tracker=# CREATE TABLE "project" ("id"  SERIAL ,"project_name" VARCHAR ,"begin_date" DATE,
+  volunteer_tracker=# CREATE TABLE "projects" ("id"  SERIAL ,"project_name" VARCHAR ,"begin_date" DATE,
   "end_date" DATE ,PRIMARY KEY ("id"));
 
   volunteer_tracker=# CREATE DATABASE volunteer_tracker_test WITH TEMPLATE volunteer_tracker;

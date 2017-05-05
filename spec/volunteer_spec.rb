@@ -44,4 +44,12 @@ describe(Volunteer) do
     end
   end
 
+  describe("#==") do
+    it("is the same volunteer if it has the same first name, last name, joining date, leaving date and assigned project ID") do
+      test_volunteer = Volunteer.new({:first_name => "Sowmya", :last_name =>"Dinavahi", :joining_date => 2017-03-04, :leaving_date => 2018-04-05, :assigned_project_id => 1})
+      test_volunteer2 = Volunteer.new({:first_name => "Sowmya", :last_name =>"Dinavahi", :joining_date => 2017-03-04, :leaving_date => 2018-04-05, :assigned_project_id => 1})
+      expect(test_volunteer).to(eq(test_volunteer2))
+    end
+  end
+
 end

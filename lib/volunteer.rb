@@ -10,7 +10,7 @@ class Volunteer
   end
 
   define_singleton_method(:all) do
-    returned_volunteers = DB.exec("SELECT * FROM volunteer;")
+    returned_volunteers = DB.exec("SELECT * FROM volunteers;")
     volunteers = []
     returned_volunteers.each do |volunteer|
       first_name = volunteer.fetch('first_name')
@@ -19,5 +19,9 @@ class Volunteer
       leaving_date = volunteer.fetch('leaving_date')
     end
     volunteers
+  end
+
+  define_method(:==) do |another_volunteer|
+    self.first_name.==(another_volunteer.first_name).& (self.last_name.==(another_volunteer.last_name)).&(self.joining_date.==(another_volunteer.joining_date)).&(self.leaving_date.==(another_volunteer.leaving_date)).&(self.assigned_project_id.==(another_volunteer.assigned_project_id))
   end
 end
