@@ -18,6 +18,6 @@ class Project
       id = project.fetch("id").to_i
       projects.push(Project.new({:proj_name => proj_name, :begin_date => begin_date, :end_date => end_date, :id => id}))
     end
-   projects
+    projects
   end
 end
