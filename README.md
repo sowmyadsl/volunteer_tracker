@@ -12,16 +12,19 @@ Bundler
 
 ## User Stories
 
-* User can add a project to the database with a name and description.
-* User can add a volunteer with name and their date of service.
-* User can update a project and delete them.
-* User can add a volunteer to a project.
+* User can add a project with name of the project, begin date and end date on the welcome page.
+* User can add, delete and update a project.
+* User can add volunteers on the next page.
+* User can add volunteers with first name, last name, joining date and leaving date.
+* User can add, delete and update volunteers.
+* On the same page, User can navigate through a drop down list of projects and assign each project to volunteers.
 
 In PSQL:
 
 CREATE DATABASE volunteer_tracker;
-CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar, date_of_service date, hours_served);
-CREATE TABLE projects (id serial PRIMARY KEY, name varchar, description varchar);
+CREATE TABLE "volunteer" ("id"  SERIAL ,"first_name" VARCHAR ,"last_name" VARCHAR ,"joining_date" DATE ,"leaving_date" DATE ,"assigned_project_id" INTEGER ,PRIMARY KEY ("id"));
+CREATE TABLE "project" ("id"  SERIAL ,"project_name" VARCHAR ,"begin_date" DATE,
+"end_date" DATE ,PRIMARY KEY ("id"));
 
 ### Installing
 
