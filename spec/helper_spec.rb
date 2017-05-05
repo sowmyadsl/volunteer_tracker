@@ -4,7 +4,6 @@ require 'rspec'
 require 'pg'
 
 
-
 DB = PG.connect({:dbname => 'volunteer_tracker_test'})
 
 RSpec.configure do |config|
