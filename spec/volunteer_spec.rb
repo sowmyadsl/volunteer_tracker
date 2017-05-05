@@ -30,4 +30,11 @@ describe(Volunteer) do
     end
   end
 
+  describe("#leaving_date") do
+    it("lets you give a leaving date to volunteer") do
+      test_volunteer = Volunteer.new({:first_name => "Sowmya", :last_name =>"Dinavahi", :joining_date => 2017-03-04, :leaving_date => 2018-04-05, :assigned_project_id => 1})
+      expect(test_volunteer.leaving_date()).to(eq(2018-04-05))
+    end
+  end
+
 end
