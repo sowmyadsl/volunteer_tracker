@@ -1,0 +1,25 @@
+<h1> Welcome to the Volunteers Page </h1>
+<p> Add an volunteer to the database:</p>
+
+<form action="/volunteers" method="post">
+  <label for = "first_name"> Enter your first name: </label>
+  <input id = "first_name" name="first_name" type="text">
+  <label for ="last_name"> Enter your last name: </label>
+  <input id = "last_name" name="last_name" type="text">
+  <label for="joining_date">Joining date:</label>
+  <input type="joining_date" name="joining_date" type="date">
+  <label for="leaving_date">Leaving date:</label>
+  <input type="leaving_date" name="leaving_date" type="date">
+<button type="submit" >Add volunteers</button>
+
+<ul>
+  <%= @volunteers.each do |volunteer| %>
+  <li><a href = "/volunteers <%= volunteer.id() %>"><%= volunteer.first_name() %> <%= volunteer.last_name() %>
+    <%= volunteer.joining_date() %><%= volunteer.leaving_date() %> </a></li>
+</ul>
+<% else %>
+<p> There are no volunteers added yet! </p>
+<% end %>
+
+<p><a href="/volunteers">See all volunteers</a></p>
+<p><a href="/">Return to Main Page </a></p>

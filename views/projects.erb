@@ -1,0 +1,24 @@
+<h1> Welcome to the Projects Page </h1>
+<p> Add a project to the database:</p>
+
+<form action="/projects" >
+  <label for = "proj_name"> Project's name: </label>
+  <input id = "proj_name" name="proj_name" type="text">
+  <label for ="begin_date"> Begin Date: </label>
+  <input id = "begin_date" name="begin_date" type="date">
+  <label for="end_date">End Date:</label>
+  <input id="end_date" name="end_date" type="date">
+<button type="submit">Add project</button>
+
+<% if @projects.any? %>
+<ul>
+  <% @projects.each do |project| %>
+  <li><a href = "/projects <%= project.id() %>"><%= project.proj_name() %> <%=project.begin_date() %> <%= project.end_date() %> </a></li>
+  <% end %>
+</ul>
+<% else %>
+<p> There are no projects added yet! </p>
+<% end %>
+
+<p><a href="/projects">See all projects</a></p>
+<p><a href="/">Return to Main Page </a></p>

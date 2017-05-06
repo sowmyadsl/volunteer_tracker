@@ -68,3 +68,14 @@ describe(".find") do
       expect(test_project.proj_name()).to eq("Robot Technologies")
   end
 end
+
+ describe("#delete") do
+   it("lets you delete a project from the database") do
+     test_project = Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", :id => nil})
+     test_project.save()
+     test_project2 = Project.new({:proj_name =>"Bew Technologies",:begin_date => "2017-06-09", :end_date => "2018-09-05", :id => nil})
+     test_project2.save()
+     test_project.delete()
+     expect(Project.all()).to eq([test_project2])
+   end
+ end
