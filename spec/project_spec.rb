@@ -14,10 +14,16 @@ describe('.all') do
     expect(test_project1.proj_name).to eq("Web Technologies")
   end
 end
+
   describe("#begin_date") do
   it("returns the begin date of the project") do
     test_project1 = Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", id: nil})
     expect(test_project1.begin_date).to eq("2017-03-04")
   end
-
+end
+  describe("#end_date") do
+  it("returns the end date of the project") do
+    test_project1 = Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", id: nil})
+    expect(test_project1.end_date).to eq("2018-04-05")
+  end
 end

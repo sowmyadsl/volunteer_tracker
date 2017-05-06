@@ -20,4 +20,8 @@ class Project
     end
     projects
   end
+
+  def save
+    DB.exec("INSERT INTO projects (proj_name, begin_date, end_date) VALUES ('#{@proj_name}','#{@begin_date}', '#{@end_date}') RETURNING id;")
+  end
 end
