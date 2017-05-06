@@ -27,6 +27,22 @@ class Project
   end
 
   define_method(:==) do |another_project|
-  (self.proj_name.==(another_project.proj_name)).& (self.begin_date.==(another_project.begin_date)).& (self.end_date.==(another_project.end_date)).& (self.id.==(another_project.id))
+    (self.proj_name.==(another_project.proj_name)).& (self.begin_date.==(another_project.begin_date)).& (self.end_date.==(another_project.end_date)).& (self.id.==(another_project.id))
+  end
+
+  define_singleton_method(:find) do |id|
+    found_project = nil
+    Project.all().each do |project|
+      if project.id().==(id)
+        found_project = project
+      end
+    end
+    found_project
+  end
+
+  define_method(:update) do |attributes|
+    @proj_name = attributes.fetch(:proj_name)
+    @id = self.id()
+    DB.exec("UPDATE projects SET project_name = '#{@proj_name}' WHERE id = #{@id};")
   end
 end

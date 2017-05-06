@@ -41,3 +41,30 @@ describe("#save") do
     expect(Project.all).to eq([test_project])
   end
 end
+
+describe("#==") do
+  it("is of the same class, project") do
+    test_project = Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", :id => nil})
+    test_project1 = Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", :id => nil})
+    expect(test_project).to eq(test_project1)
+  end
+end
+
+describe(".find") do
+    it("returns a project by its ID number") do
+      test_project =  Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", :id => nil})
+      test_project.save()
+      test_project2 = Project.new({:proj_name =>"Bew Technologies",:begin_date => "2017-06-09", :end_date => "2018-09-05", :id => nil})
+      test_project2.save()
+      expect(Project.find(test_project2.id())).to eq(test_project2)
+    end
+  end
+
+  describe("#update") do
+    it("lets you update projects in database") do
+      test_project =  Project.new({:proj_name =>"Web Technologies",:begin_date => "2017-03-04", :end_date => "2018-04-05", :id => nil})
+      test_project.save
+      test_project.update({:proj_name => "Robot Technologies"})
+      expect(test_project.proj_name()).to eq("Robot Technologies")
+  end
+end

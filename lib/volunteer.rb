@@ -24,7 +24,7 @@ class Volunteer
   end
 
   define_method(:==) do |another_volunteer|
-    self.first_name.==(another_volunteer.first_name).& (self.last_name.==(another_volunteer.last_name)).&(self.joining_date.==(another_volunteer.joining_date)).&(self.leaving_date.==(another_volunteer.leaving_date)).&(self.assigned_project_id.==(another_volunteer.assigned_project_id))
+    self.first_name.==(another_volunteer.first_name).& (self.last_name.==(another_volunteer.last_name)).& (self.joining_date.==(another_volunteer.joining_date)).& (self.leaving_date.==(another_volunteer.leaving_date)).& (self.assigned_project_id.==(another_volunteer.assigned_project_id))
   end
 
   define_method(:save) do
