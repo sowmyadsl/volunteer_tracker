@@ -12,16 +12,21 @@ class Project
     returned_projects = DB.exec("SELECT * FROM projects;")
     projects = []
     returned_projects.each() do |project|
-      proj_name = project.fetch("proj_name")
+      proj_name = project.fetch("project_name")
       begin_date = project.fetch("begin_date")
       end_date = project.fetch("end_date")
-      id = project.fetch("id").to_i
+      id = project.fetch("id").to_i()
       projects.push(Project.new({:proj_name => proj_name, :begin_date => begin_date, :end_date => end_date, :id => id}))
     end
     projects
   end
 
   def save
-    DB.exec("INSERT INTO projects (proj_name, begin_date, end_date) VALUES ('#{@proj_name}','#{@begin_date}', '#{@end_date}') RETURNING id;")
+    result = DB.exec("INSERT INTO projects (project_name, begin_date, end_date) VALUES ('#{@proj_name}','#{@begin_date}', '#{@end_date}') RETURNING id;")
+    @id = result.first.fetch('id').to_i
+  end
+
+  define_method(:==) do |another_project|
+  (self.proj_name.==(another_project.proj_name)).& (self.begin_date.==(another_project.begin_date)).& (self.end_date.==(another_project.end_date)).& (self.id.==(another_project.id))
   end
 end
