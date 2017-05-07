@@ -1,7 +1,19 @@
 <h1> Welcome to the Volunteers Page </h1>
-<p> Add an volunteer to the database:</p>
+<p> Add a volunteer to the database:</p>
 <hr>
+<p> Add volunteers to any project:</p>
 <form action="/volunteers" method="post">
+  <label for="assigned_project_id">Select a Project</label>
+  <select id='assigned_project_id' name='assigned_project_id' type='text'>
+    <% if @projects.any? %>
+      <% @projects.each() do |project| %>
+      <option value="<%= project.id()%>"> <%= project.proj_name() %> </option>
+      <% end %>
+    <% else %>
+      <p> Please add projects first! </p>
+    <% end %>
+  </select>
+  <br>
   <label for = "first_name"> Enter first name: </label>
   <input id = "first_name" name="first_name" type="text">
   <br>
@@ -18,18 +30,18 @@
   <input id="leaving_date" name="leaving_date" type="date">
   <br>
   <br>
-<button type="submit" >Add volunteers</button>
-<hr>
-<% if @volunteers.any? %>
-<ul>
-  <% @volunteers.each do |volunteer| %>
-  <li><a href = "/volunteers <%= volunteer.id() %>"><%= volunteer.first_name() %> <%= volunteer.last_name() %>
-    <%= volunteer.joining_date() %><%= volunteer.leaving_date() %> </a></li>
-  <% end %>
-</ul>
-<% else %>
-<p> There are no volunteers added yet! </p>
-<% end %>
-<hr>
-<p><a href="/volunteers">See all volunteers</a></p>
-<p><a href="/">Return to Main Page </a></p>
+  <button type="submit" >Add volunteers</button>
+  <hr>
+  <% if @volunteers.any? %>
+  <ul>
+    <% @volunteers.each do |volunteer| %>
+    <li><a href = "/volunteers/"><%= volunteer.first_name() %> <%= volunteer.last_name() %>
+      <%= volunteer.joining_date() %><%= volunteer.leaving_date() %> </a></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p> There are no volunteers added yet! </p>
+    <% end %>
+    <hr>
+    <p><a href="/volunteers">See all volunteers</a></p>
+    <p><a href="/">Return to Main Page </a></p>

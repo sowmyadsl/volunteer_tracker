@@ -1,7 +1,7 @@
 <h1> Welcome to the Projects Page </h1>
 <p> Add a project to the database:</p>
 
-<form action="/project" method="post">
+<form action="/projects" method="post">
   <label for = "proj_name"> Project's name: </label>
   <input id = "proj_name" name="proj_name" type="text">
   <label for ="begin_date"> Begin Date: </label>
@@ -13,7 +13,7 @@
 <% if @projects.any? %>
 <ul>
   <% @projects.each do |project| %>
-  <li><a href = "/projects <%= project.id() %>"><%= project.proj_name() %> <%=project.begin_date() %> <%= project.end_date() %> </a></li>
+  <li><a href = "/projects/<%= project.id() %>"><%= project.proj_name() %> <%=project.begin_date() %> <%= project.end_date() %> </a></li>
   <% end %>
 </ul>
 <% else %>
