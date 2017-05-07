@@ -43,9 +43,29 @@ post('/volunteers') do
   joining_date = params.fetch("joining_date")
   leaving_date = params.fetch("leaving_date")
   assigned_project_id = params.fetch("assigned_project_id")
-  volunteer = Volunteer.new({:first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date, :assigned_project_id => assigned_project_id})
+  volunteer = Volunteer.new({:first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date, :assigned_project_id => assigned_project_id, :id => nil})
   volunteer.save
   @projects = Project.all
   @volunteers = Volunteer.all
   erb(:volunteers)
+end
+
+get('/volunteers/:id') do
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
+  erb(:volunteer)
+end
+
+get('/volunteers/:id/edit') do
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
+  erb(:volunteer)
+end
+
+patch("/volunteers/:id") do
+  first_name = params.fetch("first_name")
+  last_name = params.fetch("last_name")
+  joining_date = params.fetch("joining_date")
+  leaving_date = params.fetch("leaving_date")
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
+  @volunteer.update({ :first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date})
+  erb(:volunteer)
 end

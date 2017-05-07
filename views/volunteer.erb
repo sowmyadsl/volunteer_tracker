@@ -1,0 +1,7 @@
+<h2> Update <%= @volunteer.first_name() %> <%= @volunteer.last_name() %></h2>
+<form action="/volunteer_edit/<%= @volunteer.id() %>" method="post">
+  <label for="name">Edit volunteer's name: </label>
+  <input type="text" name="edit-name">
+  <button type="submit">Submit</button>
+</form>
+<br>
