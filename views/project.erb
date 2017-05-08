@@ -1,5 +1,18 @@
-<h1> Project added successfully </h1>
-<div class="container">
-    <p><a href="/projects"> View All Projects </a></p>
-    <p><a href="/"> Return to Main Page </a></p>
-</div>
+<h2> Update <%= @project.proj_name() %> <%= @project.begin_date() %> <%= @project.end_date() %></h2>
+<form action="/projects/<%= @project.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for = "proj_name"> Project's name: </label>
+  <input id = "proj_name" name="proj_name" type="text">
+  <label for ="begin_date"> Begin Date: </label>
+  <input id = "begin_date" name="begin_date" type="date">
+  <label for="end_date">End Date:</label>
+  <input id="end_date" name="end_date" type="date">
+  <button type="submit">Submit</button>
+</form>
+<hr>
+<br>
+<form action="/projects/<%= @project.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Remove Project From List</button>
+</form>
+<br>

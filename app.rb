@@ -14,9 +14,6 @@ get('/') do
 end
 
 get('/projects') do
-# project_name = params.fetch("proj_name")
-# begin_date = params.fetch("begin_date")
-# end_date = params.fetch("end_date")
 @projects = Project.all
 erb(:projects)
 end
@@ -28,6 +25,28 @@ post('/projects') do
   project = Project.new({:proj_name => project_name, :begin_date => begin_date, :end_date => end_date, :id => nil})
   project.save
   @projects = Project.all
+  erb(:projects)
+end
+
+get('/projects/:id') do
+  @project = Project.find(params.fetch("id").to_i)
+  erb(:project)
+end
+
+patch('/projects/:id') do
+  proj_name = params.fetch("proj_name")
+  begin_date = params.fetch("begin_date")
+  end_date = params.fetch("end_date")
+  @project = Project.find(params.fetch("id").to_i)
+  @project.update({:proj_name => proj_name, :begin_date => begin_date, :end_date => end_date, :id => nil})
+  @projects = Project.all
+  erb(:project)
+end
+
+delete('/projects/:id')do
+  @project = Project.find(params.fetch("id").to_i)
+  @project.delete()
+  @projects = Project.all()
   erb(:projects)
 end
 
