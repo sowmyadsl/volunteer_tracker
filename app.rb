@@ -57,6 +57,7 @@ end
 
 get('/volunteers/:id/edit') do
   @volunteer = Volunteer.find(params.fetch("id").to_i)
+  @projects = Project.all
   erb(:volunteer)
 end
 
@@ -65,14 +66,21 @@ patch("/volunteers/:id") do
   last_name = params.fetch("last_name")
   joining_date = params.fetch("joining_date")
   leaving_date = params.fetch("leaving_date")
+  assigned_project_id = params.fetch("assigned_project_id")
   @volunteer = Volunteer.find(params.fetch("id").to_i)
-  @volunteer.update({ :first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date})
+  @volunteer.update({ :first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date, :assigned_project_id => assigned_project_id})
+  @volunteers = Volunteer.all
+  @projects = Project.all
   erb(:volunteer)
 end
 
 delete("/volunteers/:id") do
   @volunteer = Volunteer.find(params.fetch("id").to_i())
-  @volunteer.delete()
+  if @volunteer
+    @volunteer.delete()
+  else
+    "There is nothing to delete!"
+  end
   @volunteers = Volunteer.all
   @projects = Project.all
   erb(:volunteers)

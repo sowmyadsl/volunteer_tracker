@@ -50,8 +50,8 @@ class Volunteer
     @last_name = attributes.fetch(:last_name)
     @joining_date = attributes.fetch(:joining_date)
     @leaving_date = attributes.fetch(:leaving_date)
-    @project_id = attributes.fetch(:assigned_project_id)
-    DB.exec("UPDATE volunteers SET (first_name, last_name, joining_date, leaving_date,assigned_project_id) = ('#{@first_name}','#{@last_name}','#{@joining_date}','#{@leaving_date}', #{@project_id}) WHERE id = #{@id};")
+    @project_id = attributes.fetch(:assigned_project_id).to_i
+    DB.exec("UPDATE volunteers SET (first_name, last_name, joining_date, leaving_date, assigned_project_id) = ('#{@first_name}','#{@last_name}','#{@joining_date}','#{@leaving_date}', #{@project_id}) WHERE id = #{@id};")
   end
 
   define_method(:delete) do

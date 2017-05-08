@@ -15,27 +15,23 @@
   </select>
   <br>
   <label for = "first_name"> Enter first name: </label>
-  <input id = "first_name" name="first_name" type="text">
-  <br>
-  <br>
+  <input id = "first_name" name="first_name" type="text"required>
+  <br><br>
   <label for ="last_name"> Enter last name: </label>
-  <input id = "last_name" name="last_name" type="text">
-  <br>
-  <br>
+  <input id = "last_name" name="last_name" type="text"required>
+  <br><br>
   <label for="joining_date">Joining date:</label>
-  <input id="joining_date" name="joining_date" type="date">
-  <br>
-  <br>
+  <input id="joining_date" name="joining_date" type="date"required>
+  <br><br>
   <label for="leaving_date">Leaving date:</label>
-  <input id="leaving_date" name="leaving_date" type="date">
-  <br>
-  <br>
+  <input id="leaving_date" name="leaving_date" type="date"required>
+  <br><br>
   <button type="submit" >Add volunteers</button>
   <hr>
   <% if @volunteers.any? %>
   <ul>
     <% @volunteers.each do |volunteer| %>
-    <li><a href = "/volunteers/<%= volunteer.id() %>"><%= volunteer.first_name() %> <%= volunteer.last_name() %>
+    <li><a href = "/volunteers/<%= volunteer.id() %>/edit"><%= volunteer.first_name() %> <%= volunteer.last_name() %>
       <%= volunteer.joining_date() %><%= volunteer.leaving_date() %> </a></li>
       <% end %>
     </ul>
