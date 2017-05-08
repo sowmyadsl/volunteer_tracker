@@ -5,3 +5,8 @@
   <button type="submit">Submit</button>
 </form>
 <br>
+   <form action="/volunteers/<%= @volunteer.id %>" method="post">
+     <input type="hidden" name="_method" value="delete">
+     <button type="submit">Remove Volunteer From List</button>
+   </form>
+   <br>

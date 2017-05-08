@@ -69,3 +69,11 @@ patch("/volunteers/:id") do
   @volunteer.update({ :first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date})
   erb(:volunteer)
 end
+
+delete("/volunteers/:id") do
+  @volunteer = Volunteer.find(params.fetch("id").to_i())
+  @volunteer.delete()
+  @volunteers = Volunteer.all
+  @projects = Project.all
+  erb(:volunteers)
+end
