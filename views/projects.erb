@@ -1,6 +1,6 @@
 <h1> Welcome to the Projects Page </h1>
 <p> Add a project to the database:</p>
-
+<hr>
 <form action="/projects" method="post">
   <label for = "proj_name"> Project's name: </label>
   <input id = "proj_name" name="proj_name" type="text">
@@ -9,7 +9,7 @@
   <label for="end_date">End Date:</label>
   <input id="end_date" name="end_date" type="date">
 <button type="submit">Add project</button>
-
+<hr>
 <% if @projects.any? %>
 <ul>
   <% @projects.each do |project| %>

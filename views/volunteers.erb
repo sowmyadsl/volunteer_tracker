@@ -6,11 +6,11 @@
   <label for="assigned_project_id">Select a Project</label>
   <select id='assigned_project_id' name='assigned_project_id' type='text'>
     <% if @projects.any? %>
-      <% @projects.each() do |project| %>
-      <option value="<%= project.id()%>"> <%= project.proj_name() %> </option>
-      <% end %>
+    <% @projects.each() do |project| %>
+    <option value="<%= project.id()%>"> <%= project.proj_name() %> </option>
+    <% end %>
     <% else %>
-      <p> Please add projects first! </p>
+    <p> Please add projects first! </p>
     <% end %>
   </select>
   <br>
@@ -29,15 +29,33 @@
   <button type="submit" >Add volunteers</button>
   <hr>
   <% if @volunteers.any? %>
-  <ul>
+  <table style="width:50%">
+    <tr>
+      <th>Volunteer Name</th>
+      <th>Joining Date </th>
+      <th>Leaving Data </th>
+      <th>Assigned project </th>
+    </tr>
     <% @volunteers.each do |volunteer| %>
-    <li><a href = "/volunteers/<%= volunteer.id() %>/edit"><%= volunteer.first_name() %> <%= volunteer.last_name() %>
-      <%= volunteer.joining_date() %><%= volunteer.leaving_date() %> </a></li>
-      <% end %>
-    </ul>
-    <% else %>
-    <p> There are no volunteers added yet! </p>
+    <tr>
+      <th><a href="/volunteers/<%= volunteer.id() %>/edit"><%= volunteer.last_name() %>, <%= volunteer.first_name() %> </a></th>
+      <th><%= volunteer.joining_date() %></th>
+      <th><%= volunteer.leaving_date() %></th>
+      <th><% if @projects.any? %>
+        <% @projects.each() do |project| %>
+        <% if project.id == volunteer.assigned_project_id %>
+        <option value="<%= project.id()%>"> <%= project.proj_name() %> </option>
+        <% end %>
+        <% end %>
+        <% end %>
+
+      </th>
+    </tr>
     <% end %>
-    <hr>
-    <p><a href="/volunteers">See all volunteers</a></p>
-    <p><a href="/">Return to Main Page </a></p>
+  </table>
+  <% else %>
+  <p> There are no volunteers added yet! </p>
+  <% end %>
+  <hr>
+  <p><a href="/volunteers">See all volunteers</a></p>
+  <p><a href="/">Return to Main Page </a></p>

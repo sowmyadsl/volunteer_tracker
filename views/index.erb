@@ -1,7 +1,7 @@
 <h1> Welcome to the Volunteer Tracker</h1>
 <hr>
  <% if @projects.any? %>
- <table style="width:50%">
+ <table style="width:40%">
    <tr>
      <th>Project Name</th>
      <th>Begin Date </th>
@@ -9,7 +9,7 @@
    </tr>
    <% @projects.each do |project| %>
    <tr>
-     <th><a href="/projects/<%= project.id%>"> <%=project.proj_name%></th>
+     <th><a href="/projects/<%= project.id%>"> <%=project.proj_name%></a></th>
      <th><%=project.begin_date%></th>
      <th><%=project.end_date%></th>
    </tr>

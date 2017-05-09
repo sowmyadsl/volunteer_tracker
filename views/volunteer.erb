@@ -6,6 +6,8 @@
   <select id='assigned_project_id' name='assigned_project_id' type='text'>
     <% @projects.each() do |project| %>
     <% if project.id == @volunteer.assigned_project_id %>
+    <option selected value="<%= project.id()%>"> <%= project.proj_name() %> </option>
+    <% else %>
     <option value="<%= project.id()%>"> <%= project.proj_name() %> </option>
     <% end %>
     <% end %>
