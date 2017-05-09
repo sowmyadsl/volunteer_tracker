@@ -5,7 +5,7 @@ Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
 # example integration test
-
+#
 # describe("the phrase parser path", {:type => :feature}) do
 #   it("processes the user input and returns correct message if its a palindrome") do
 #     visit("/")
