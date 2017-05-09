@@ -88,6 +88,7 @@ patch("/volunteers/:id") do
   assigned_project_id = params.fetch("assigned_project_id")
   @volunteer = Volunteer.find(params.fetch("id").to_i)
   @volunteer.update({ :first_name => first_name, :last_name => last_name, :joining_date => joining_date, :leaving_date => leaving_date, :assigned_project_id => assigned_project_id})
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
   @volunteers = Volunteer.all
   @projects = Project.all
   erb(:volunteer)
