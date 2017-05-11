@@ -1,6 +1,6 @@
 require "project"
 require "rspec"
-require "helper_spec"
+require "spec_helper"
 
 describe(Project) do
   before() do

@@ -1,6 +1,6 @@
 require "volunteer"
 require "rspec"
-require "helper_spec"
+require "spec_helper"
 
 describe(Volunteer) do
   describe(".all") do

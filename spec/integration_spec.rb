@@ -1,5 +1,7 @@
 require "capybara/rspec"
+require "spec_helper"
 require "./app"
+require "pry"
 
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
@@ -14,9 +16,9 @@ describe("the volunteer tracker path", {:type => :feature}) do
   it("adds a project to database") do
     visit("/projects")
     fill_in("proj_name",:with => "humana")
-    fill_in("begin_date",:with => "17/03/02")
-    fill_in("end_date",:with => "18/03/04")
-    click_button("")
-    expect(page).to have_content("humana 17/03/02 18/03/04")
+    fill_in("begin_date",:with => "03/02/2017")
+    fill_in("end_date",:with => "03/04/2018")
+    click_button("Add project")
+    expect(page).to have_content("humana")
   end
 end

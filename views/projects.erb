@@ -3,12 +3,13 @@
 <hr>
 <form action="/projects" method="post">
   <label for = "proj_name"> Project's name: </label>
-  <input id = "proj_name" name="proj_name" type="text">
+  <input  name="proj_name" type="text">
   <label for ="begin_date"> Begin Date: </label>
-  <input id = "begin_date" name="begin_date" type="date">
+  <input  name="begin_date" type="date">
   <label for="end_date">End Date:</label>
-  <input id="end_date" name="end_date" type="date">
-<button type="submit">Add project</button>
+  <input  name="end_date" type="date">
+  <button type="submit">Add project</button>
+</form>
 <hr>
 <% if @projects.any? %>
 <ul>

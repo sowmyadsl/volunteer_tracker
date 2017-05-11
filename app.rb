@@ -33,14 +33,14 @@ get('/projects/:id') do
   erb(:project)
 end
 
-patch('/projects/:id') do
+post('/projects') do
   proj_name = params.fetch("proj_name")
   begin_date = params.fetch("begin_date")
   end_date = params.fetch("end_date")
   @project = Project.find(params.fetch("id").to_i)
   @project.update({:proj_name => proj_name, :begin_date => begin_date, :end_date => end_date, :id => nil})
   @projects = Project.all
-  erb(:project)
+  redirect('/projects')
 end
 
 delete('/projects/:id')do
